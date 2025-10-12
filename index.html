@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".timeline-item");
+    
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target); // animate only once
+            }
+        });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => observer.observe(item));
+});
+</script>
+
 <body>
     <header>
         <div class="container">
@@ -53,26 +70,6 @@
             <p class="section-subtitle">Find the perfect class for your fitness and fun needs</p>
             
             <div class="classes-grid">
-                <div class="class-card">
-                    <div class="class-image" style="background-image: url('https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                        <span class="class-tag">Most Popular</span>
-                    </div>
-                    <div class="class-content">
-                        <h3>Zumba Fitness</h3>
-                        <p class="class-schedule">Every Friday, Saturday & Sunday</p>
-                        <p class="class-description">High-energy dance workout combining Latin rhythms with easy-to-follow moves.</p>
-                        <div class="class-details">
-                            <span><i class="fas fa-clock"></i> 60 mins</span>
-                            <span><i class="fas fa-user"></i> All Levels</span>
-                        </div>
-                        <div class="class-pricing">
-                            <p>$15 <span>per session</span></p>
-                            <p>$50 <span>4-session pack</span></p>
-                        </div>
-                        <a href="#contact" class="btn small">Book Now</a>
-                    </div>
-                </div>
-                
                 <div class="class-card">
                     <div class="class-image" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
                         <span class="class-tag">New</span>
@@ -183,16 +180,25 @@
                     <h2 class="section-title">About NepAus Dance Studio</h2>
                     <p>Founded in Melbourne, Victoria, NepAus Dance Studio has grown from a small dance crew to one of the most vibrant dance communities in Australia. With over 1.6K followers and growing, we're passionate about bringing people together through the joy of dance.</p>
                     
-                    <h3>Our Mission</h3>
+                   
+                    <!-- ✨ Meet Our Team Section -->
+<div class="team-section">
+    <h3>Meet the Founders</h3>
+    <div class="team-members">
+        <div class="team-card">
+            <img src="ABOUT_PERSON1.jpg" alt="Director">
+            <h4>John Doe</h4>
+            <p>Founder & Director</p>
+        </div>
+        <div class="team-card">
+            <img src="ABOUT_PERSON1.jpg" alt="Team Member">
+            <h4>Jane Smith</h4>
+            <p>Senior Instructor</p>
+        </div>
+    </div>
+</div>
+ <h3>Our Mission</h3>
                     <p>To provide a welcoming environment where people of all skill levels can experience the physical and mental benefits of dance while having fun and building community.</p>
-                    
-                    <h3>Our Values</h3>
-                    <ul class="values-list">
-                        <li><i class="fas fa-heart"></i> <strong>Joy:</strong> We believe dance should be fun first</li>
-                        <li><i class="fas fa-users"></i> <strong>Community:</strong> We're more than a studio - we're a family</li>
-                        <li><i class="fas fa-star"></i> <strong>Quality:</strong> Professional instruction in a casual setting</li>
-                        <li><i class="fas fa-leaf"></i> <strong>Health:</strong> Promoting physical and mental wellbeing</li>
-                    </ul>
                     
                     <div class="studio-stats">
                         <div class="stat-item">
@@ -230,6 +236,7 @@
                     <div class="timeline-date">2023</div>
                     <div class="timeline-content">
                         <h3>Melbourne Dance Festival Winners</h3>
+                        <img src="logo.jpg">
                         <p>First place in the Community Dance category at the annual Melbourne Dance Festival.</p>
                     </div>
                 </div>
@@ -238,6 +245,7 @@
                     <div class="timeline-date">2022</div>
                     <div class="timeline-content">
                         <h3>Featured on Channel 7 News</h3>
+                        <img src="logo.jpg">
                         <p>Our unique approach to community dance was featured in a national news segment.</p>
                     </div>
                 </div>
@@ -246,6 +254,7 @@
                     <div class="timeline-date">2021</div>
                     <div class="timeline-content">
                         <h3>1K Followers Milestone</h3>
+                        <img src="logo.jpg">
                         <p>Our social media community grew to over 1,000 engaged followers.</p>
                     </div>
                 </div>
@@ -254,6 +263,7 @@
                     <div class="timeline-date">2020</div>
                     <div class="timeline-content">
                         <h3>Studio Expansion</h3>
+                        <img src="logo.jpg">
                         <p>Moved to our current larger location to accommodate growing class sizes.</p>
                     </div>
                 </div>
@@ -262,6 +272,7 @@
                     <div class="timeline-date">2019</div>
                     <div class="timeline-content">
                         <h3>Founded NepAus Dance Studio</h3>
+                        <img src="logo.jpg">
                         <p>What started as a small dance crew officially became a registered business.</p>
                     </div>
                 </div>
@@ -466,8 +477,8 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <h3>NepAus Dance Studio</h3>
+                    <img src="footer.png">
                     <p>Melbourne's premier dance studio offering fun, fitness and community through diverse dance styles.</p>
-                    <p>&copy; 2023 NepAus Dance Studio. All rights reserved.</p>
                 </div>
                 
                 <div class="footer-links">
@@ -501,8 +512,13 @@
                     <p><i class="fas fa-phone-alt"></i> 04xx xxx xxx</p>
                     <p><i class="fas fa-envelope"></i> dancestudio@gmail.com</p>
                 </div>
+                
             </div>
         </div>
+       <div class="footer-bottom">
+    <p>&copy; 2023 NepAus Dance Studio. All rights reserved.</p>
+        </div>
+
     </footer>
 
     <script src="script.js"></script>

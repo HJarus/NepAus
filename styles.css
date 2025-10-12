@@ -490,6 +490,59 @@ nav ul li a:hover {
 .about-image:hover img {
     transform: scale(1.05);
 }
+/* Team Section */
+.team-section {
+    margin-top: 50px;
+}
+
+.team-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--dark-color);
+}
+
+.team-members {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    flex: 1 1 220px;
+    max-width: 250px;
+    text-align: center;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.team-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color);
+}
+
+.team-card h4 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    color: var(--primary-color);
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
 
 /* Achievements Section */
 .achievements-section {
@@ -520,12 +573,20 @@ nav ul li a:hover {
     width: 50%;
     box-sizing: border-box;
     margin-bottom: 30px;
-}
+    opacity: 0;
+    transform: translateX(150px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    will-change: opacity, transform;
+    }
 
 .timeline-item:nth-child(odd) {
+    transform: translateX(-150px);
     left: 0;
 }
-
+.timeline-item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 .timeline-item:nth-child(even) {
     left: 50%;
 }
@@ -581,6 +642,13 @@ nav ul li a:hover {
     margin-bottom: 10px;
     color: var(--primary-color);
 }
+.timeline-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
 
 /* Testimonials Section */
 .testimonials-section {
@@ -906,6 +974,44 @@ footer {
     color: #bbb;
     font-size: 0.8rem;
 }
+/* Footer Image */
+.footer-about img {
+    width: 150px;       /* adjust as needed */
+    max-width: 100%;    /* ensures responsiveness */
+    height: auto;
+    display: block;
+    margin: 15px 0 20px; /* space above and below */
+    transition: transform 0.3s ease;
+}
+
+.footer-about img:hover {
+    transform: scale(1.05); /* slight zoom on hover for subtle effect */
+}
+
+/* Footer bottom copyright */
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;  /* small text */
+    color: #bbb;
+}
+
+/* Ensure footer sticks to bottom if content is short */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
+}
+
+footer {
+    margin-top: auto;
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -975,6 +1081,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+    
+    .logo-img {
+  width: 90px;
+  height: auto;
+}
+     .logo-text {
+    margin:10px;
+  }
     section {
         padding: 60px 0;
     }
@@ -1020,9 +1134,26 @@ footer {
     .membership-card.featured {
         transform: scale(1);
     }
+    .footer-content {
+        grid-template-columns: 1fr; /* stack columns vertically */
+        text-align: center;         /* center content for mobile */
+    }
+
+    .footer-contact p {
+        justify-content: center;    /* center icons and text */
+    }
+
+    .footer-about img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
 }
 
 @media (max-width: 576px) {
+     .logo-text {
+        display: none;
+  }
     .section-title {
         font-size: 1.8rem;
     }
